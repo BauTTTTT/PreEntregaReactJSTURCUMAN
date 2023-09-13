@@ -1,41 +1,35 @@
+import { BrowserRouter as Router } from 'react-router-dom';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import NavBar from './componentes/NavBar'
+import DetalleProducto from './componentes/detalleProducto'
+import Catalogo from './componentes/catalogo'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ItemDetailContainer from './ItemDetailContainer';
+import ItemListContainer from './ItemListContainer';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <NavBar/>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="App">
+        <Navbar />
+
+        <Switch>
+          {/* Ruta para la página de inicio */}
+          <Route exact path="/" component={ItemListContainer} />
+
+          {/* Ruta para la página de categoría */}
+          <Route path="/category/:id" component={ItemListContainer} />
+
+          {/* Ruta para la página de detalle de producto */}
+          <Route path="/item/:id" component={ItemDetailContainer} />
+        </Switch>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <section id="news">Noticias</section>
-    <section id="about">Acerca de</section>
-    <section id="services">Servicios</section>
-    <section id="contact">Contacto</section>
-    </>
-  )
+    </Router>
+  );
 }
 
 export default App

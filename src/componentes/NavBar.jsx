@@ -1,15 +1,19 @@
-import "./nAVbAR.css"
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function NavBar() {
-    return(
-        <div class="navbar">
-    <a href="#home">Inicio</a>
-    <a href="#news">Noticias</a>
-    <a href="#about">Acerca de</a>
-    <a href="#services">Servicios</a>
-    <a href="#contact">Contacto</a>
-</div>
-    )
+
+const Navbar = () => {
+return (
+    <nav>
+    <div className="logo">
+        <Link to="/">Mi Tienda</Link>
+    </div>
+    <div className="cart">
+    <Link to="/">Catálogo</Link>
+        
+    </div>
+    </nav>
+);
 }
 
-
+export default Navbar;
